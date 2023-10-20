@@ -1,0 +1,436 @@
+@font-face {
+    font-family: 'neodigital_free_font';
+    src: url('../fonts/neodigital_free_font.ttf') format('truetype')
+}
+html, main, body{
+    background-color: rgb(255, 196, 0) !important;
+}
+.infosZoo {
+    font-family: 'neodigital_free_font';
+    color: rgb(255, 255, 254);
+    border-radius: 30px;
+    filter: drop-shadow(-1px 3px 3px rgba(50, 50, 0, 0.563));
+    border-image: radial-gradient(#d50a0a, #720101 10%,#6a6a6a 10.5% 12%,#00000000 12.5%) 45.5% fill / 150px / 150px;
+    transition: filter 0.5s ease !important;
+}
+.infosZoo:hover {
+    color: rgb(239, 239, 57);
+    filter: drop-shadow(-1px 6px 6px rgba(50, 50, 0, 0.563));
+}
+
+.infosZoo .summary {
+    font-weight: 500;
+    font-size: larger;
+    height: 150px;
+    overflow: scroll;
+}
+
+#fences .card {
+    --bs-card-bg: transparent !important;
+    --bs-card-border-width: 0 !important;
+}
+#fences .card-img-top:hover {
+    transform : scale(1.05) !important;
+}
+
+#fences .card-img-top {
+    border: 3px solid black;
+    border-radius: 200px 200px 50px 50px / 134px 134px 25px 25px !important;
+    transition: transform 0.5s ease !important;
+}
+
+.dropdown-menu {
+    --bs-dropdown-link-hover-bg : var(rgb(232,65,65));
+    background: rgb(232,65,65);
+    background: linear-gradient(0deg, rgba(232,65,65,1) 0%, rgba(188,4,4,1) 40%, rgba(145,5,5,1) 74%); 
+}
+.dropdown-toggle:hover, header li a:hover {
+    text-decoration: underline !important;
+    color: rgb(251, 239, 71) !important;
+    transform: scale(1.2);
+    text-shadow: 0px 0px 4px #ffffff; 
+}
+
+.dropdown-menu > li > a:hover {
+    background-image: none;
+    background-color: red;
+    text-decoration: underline;
+    color: white;
+}
+
+.infoGameboy, .login{
+    background-color: rgb(210, 2, 2) !important;
+    color: white;
+    border: 3px solid black;
+    margin-bottom : 8px;
+    box-shadow: 3px 3px 1px #070a20;
+}
+.dirty {
+    filter: blur(2px) sepia(30%);
+}
+#imgFence {
+    border-radius: 50px;
+    box-shadow: 0px 0px 5px #070a20;
+    border : 3px solid black;
+}
+
+.navbar {
+    filter: drop-shadow(-1px 3px 3px rgba(50, 50, 0, 0.563)) !important;
+}
+#pokemons .eau {
+    background: radial-gradient(circle, rgb(99, 92, 236) 60%, rgb(6, 23, 116) 70%, rgb(13, 8, 89) 85%) !important;
+    }
+#pokemons .feu {
+    background: radial-gradient(circle, rgb(226, 143, 144) 60%, rgb(141, 5, 5) 70%, rgb(96, 2, 2) 85%) !important; 
+}
+#pokemons .plante {
+    background: radial-gradient(circle, rgb(92, 213, 126) 60%, rgb(40, 153, 9) 70%, rgba(28,116,2,1) 85%) !important; 
+}
+
+#pokemons .insecte {
+    background: radial-gradient(circle, rgb(190, 228, 167) 60%, rgb(82, 199, 40) 70%, rgb(43, 165, 6) 85%) !important; 
+}
+
+#pokemons .normal {
+    background: radial-gradient(circle, rgb(255, 255, 255) 60%, rgb(222, 221, 221) 65%, rgb(159, 160, 159) 85%) !important; 
+}
+
+#pokemons .vol {
+    background: radial-gradient(circle, rgb(189, 227, 232) 60%, rgb(69, 174, 187) 70%, rgb(48, 131, 131) 85%) !important; 
+}
+
+#pokemons .electric {
+    background: radial-gradient(circle, rgb(227, 227, 182) 60%, rgb(207, 210, 3) 70%, rgb(163, 142, 0) 85%) !important; 
+}
+
+#pokemons .poison {
+    background: radial-gradient(circle, rgb(228, 209, 231) 60%, rgb(162, 40, 183) 70%, rgb(117, 4, 119) 85%) !important; 
+}
+#pokemons .psy {
+    background: radial-gradient(circle, rgb(224, 192, 229) 60%, rgb(183, 90, 199) 70%, rgb(197, 55, 199) 85%) !important;
+}
+#pokemons .dragon {
+    background: radial-gradient(circle, rgb(115, 160, 192) 60%, rgb(41, 125, 195) 70%, rgb(15, 128, 156) 85%) !important; 
+}
+#pokemons .sol {
+    background: radial-gradient(circle, rgb(134, 125, 124) 60%, rgb(93, 67, 62) 70%, rgb(70, 30, 18) 85%) !important; 
+}
+#pokemons .card{
+    margin-left: 10px;
+    border-radius: 30px !important;
+    box-shadow: 2px 5px 5px #252424;
+    border : 3px solid black;
+}
+#pokemons .card-body {
+    background-color: white;
+    border-radius: 50px 50px 0px 0px;
+    transition: transform 0.5s ease;
+    box-shadow: 0px 0px 5px #070a20;
+    border : 3px solid black;
+}
+#pokemons .card:hover .card-body{
+    transform: translateY(-235px);
+}
+#pokemons .tab-pane{
+    padding-bottom : 100px;
+}
+#next:hover {
+    filter: invert(100%);
+}
+
+#before:hover {
+    filter: invert(100%);
+}
+.button {
+    background: #c70c0c;
+    border: none;
+    padding: 7px ;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    width: 120px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transform: skew(-21deg);
+    color: white;
+  }
+  .button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    left: 0;
+    background: rgb(255, 255, 255);
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.5s;
+  }
+  .button:hover {
+    color: #000000;
+  }
+  
+  .button:hover::before {
+    left: 0;
+    right: 0;
+    opacity: 1;
+  }
+  .comic-button {
+    display: inline-block;
+    padding: 4px;
+    margin: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #d70505;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px #000;
+    transition: all 0.3s ease;
+  }
+  
+  .comic-button:hover {
+    background-color: #fff;
+    color: #d70505;
+    border: 2px solid #d70505;
+    box-shadow: 5px 5px 0px #d70505;
+  }
+  
+  .comic-button:active {
+    background-color: #fcf414;
+    box-shadow: none;
+    transform: translateY(4px);
+  }
+  .nav .active {
+    box-shadow: 3px 0px 0px #000;
+    font-weight: bold !important;
+  }
+  .btn1 {
+    background: none;
+    border: 2px solid #fff;
+    font-size: 15px;
+    color: #ffffff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    border-radius: 12px;
+    background-color: #087fcf;
+    font-weight: bolder;
+    box-shadow: 0 2px 0 2px #000;
+   }
+   .btn1:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 120%;
+    background-color: #ffffff;
+    top: 50%;
+    transform: skewX(30deg) translate(-160%, -50%);
+    transition: all 0.5s;
+   }
+   
+   .btn1:hover {
+    background-color: #110890;
+    color: #fff;
+    box-shadow: 0 2px 0 2px #0d3b66;
+   }
+   .btn1:active {
+    transform: scale(0.9);
+   }
+   .modalPerso {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  .modal-contentPerso {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .closePerso {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .closePerso:hover,
+  .closePerso:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .modal-headerPerso {
+    padding: 2px 16px;
+    border-bottom: 1px solid black;
+  }
+
+@media screen and (max-width: 600px) {
+    section {
+        height: 885px !important;
+        overflow: hidden !important;
+    }
+    .navbar {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: small;
+        background: rgb(232,65,65);
+        background: linear-gradient(180deg, rgba(232,65,65,1) 0%, rgba(188,4,4,1) 40%, rgba(145,5,5,1) 74%); 
+    }
+    header li a, .dropdown-toggle {
+        transition: transform 0.5s ease !important;
+        font-size: x-large !important;
+    }
+    .navbar {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: normal;
+        background: rgb(232,65,65);
+        background: linear-gradient(180deg, rgba(232,65,65,1) 0%, rgba(188,4,4,1) 40%, rgba(145,5,5,1) 74%); 
+    }
+    #logo {
+        height : 40px;
+    }
+    #infosFence {
+        padding-top: 70px;
+        border-style: solid;
+	border-width: 39px;
+	border-image: url("../images/border.png") 39 stretch;
+    }
+
+    #next img, #before img {
+        height : 25px;
+    }
+    span {
+    display: inline-block;
+    transform: skew(21deg);
+    }
+    .btn1 {
+    padding-right : 2rem;
+    padding-left: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+    }
+    .btn1:hover::before {
+    transform: skewX(30deg) translate(220%, -50%);
+    transition-delay: 0.1s;
+    } 
+}
+
+@media screen and (min-width: 601px) and (max-width: 992px) {
+    .navbar {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: x-large;
+        background: rgb(232,65,65);
+        background: linear-gradient(180deg, rgba(232,65,65,1) 0%, rgba(188,4,4,1) 40%, rgba(145,5,5,1) 74%); 
+    }
+    section {
+        height: 1000px !important;
+        overflow: hidden !important;
+    }
+    #logo {
+        height : 70px;
+        transition: transform 0.5s ease;
+    }
+    #logo:hover {
+        filter: drop-shadow(-1px 3px 3px rgba(50, 50, 0, 0.563));
+        transform : scale(1.2);
+    }
+    #infosFence {
+        border-style: solid;
+	border-width: 39px;
+	border-image: url("../images/border.png") 39 stretch;
+    }
+    #imgPokemonFence:hover {
+        transform : scale(1.2);
+    }
+    #imgPokemonFence {
+        transition: transform 0.5s ease;
+    }
+    #next img, #before img {
+        height : 50px;
+    }
+    span {
+    display: inline-block;
+    transform: skew(21deg);
+    }
+    .btn1 {
+    margin-left: 130px;
+    padding-right : 2rem;
+    padding-left: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+    }
+    .btn1:hover::before {
+    transform: skewX(30deg) translate(220%, -50%);
+    transition-delay: 0.1s;
+    }  
+}
+
+@media screen and (min-width: 992px) {
+    .navbar {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: x-large;
+        background: rgb(232,65,65);
+        background: linear-gradient(180deg, rgba(232,65,65,1) 0%, rgba(188,4,4,1) 40%, rgba(145,5,5,1) 74%); 
+    }
+    #addFence {
+        height : 50px;
+    }
+    header li a, .dropdown-toggle {
+        transition: transform 0.5s ease !important;
+    }
+    section {
+        height: 618px !important;
+        overflow: hidden !important;
+    }
+    #logo {
+        height : 80px;
+        transition: transform 0.5s ease, filter 0.5s ease;
+    }
+    #logo:hover {
+        filter: drop-shadow(-1px 3px 3px rgba(50, 50, 0, 0.563));
+        transform : scale(1.2);
+    }
+    #infosFence {
+        border-style: solid;
+	border-width: 39px;
+	border-image: url("../images/border.png") 39 stretch;
+    }
+    #imgPokemonFence:hover {
+        transform : scale(1.2);
+    }
+    #imgPokemonFence {
+        transition: transform 0.5s ease;
+    }
+    #next img, #before img {
+        height : 50px;
+    }
+    .button span {
+    display: inline-block;
+    transform: skew(21deg);
+    }
+    .btn1 {
+    padding-right : 2rem;
+    padding-left: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+    }
+    .btn1:hover::before {
+    transform: skewX(30deg) translate(230%, -50%);
+    transition-delay: 0.1s;
+    } 
+}
