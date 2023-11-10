@@ -181,7 +181,7 @@ class Employee {
         $fence->showRandomPokemons($pokemons);
         echo('</div>
             <div class=" col-lg-6 col-12 text-center d-flex flex-column justify-content-center h3" >
-                <div class="infosZoo col-8 pt-3 mb-3 offset-2 ">
+                <div class="infosZoo col-sm-8 col-12 mt-4 mt-lg-1 pt-3 mb-3 offset-sm-2 ">
                     <h2><b>'. htmlspecialchars($fence->getName()) .' </b></h2>
                     <p> Etat de l\'enclos: ' . $fence->getCleanliness() . '</p>
                     <p> Type d\'enclos: <span  id="namePopulation">' . $fence->getType() . '</span></p>

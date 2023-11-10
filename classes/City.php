@@ -1,6 +1,6 @@
 <?php
     class City extends Fence {
-        public static $types = ["Psy", "Normal", "Combat", "Electric"];
+        public static $types = ["Psy", "Normal", "Combat", "Electrik"];
 
 
         public function __construct (array $data){

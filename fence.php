@@ -16,7 +16,7 @@
     $jsonSpecies = json_encode($species);
     $fence = $pokemonZoo->getFence($fenceId);
     ?>
-<section >
+<section id="displayTotalFence">
     
     <div class="d-flex flex-wrap" id="infosFence">
         <?php
@@ -44,6 +44,10 @@
     let index = 0;
     let changed = false;
     window.onresize = detectWidth(cards);
+
+    let fenceHeight = document.getElementById('infosFence').offsetHeight;
+    let totalHeight = fenceHeight + 180;
+    document.getElementById('displayTotalFence').style.height = totalHeight + "px";
 
     function detectWidth(cards) {
         if ((window.innerWidth < 900) && (cards.length != 1)){

@@ -6,7 +6,7 @@
         $fences= $pokemonZoo->getFences();
 ?>
     <main class="text-center" id="infosFence">
-        <div class="col-8 offset-2 infosZoo mt-3 mb-4">
+        <div class="col-sm-8 col-12 offset-sm-2 infosZoo mt-3 mb-4">
             <h1>
                 Bienvenue au <?php echo(htmlspecialchars($pokemonZoo->getName())); ?> !
             </h1>
@@ -116,14 +116,16 @@
     </main>
     <script>
     let selectFence = document.getElementById('typeFence');
+    let price = document.getElementById('priceFence').textContent;
     selectFence.addEventListener("change", function (e) {
         let nameFence = e.target.value;
-        let price = document.getElementById('priceFence').textContent;
-        let newPrice = parseInt(price) + 500;
+        let newPrice = parseInt(price);
+        if (e.target.value === "Legendaire") {
+            newPrice += 500;
+        }
         document.getElementById('priceFence').textContent = newPrice;
     });
     </script>
-    
-<?php
-    include_once('footer.php');
-?>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
