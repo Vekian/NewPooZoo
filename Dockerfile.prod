@@ -13,6 +13,3 @@ COPY . .
 # Définir un user non-root (bonne pratique en prod)
 RUN useradd -m www && chown -R www:www /var/www/html
 USER www
-
-# Exposer le socket FPM
-EXPOSE 9020
