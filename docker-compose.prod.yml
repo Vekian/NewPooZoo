@@ -22,7 +22,7 @@ services:
     environment:
       PHP_MEMORY_LIMIT: "512M"
     ports:
-      - "9020:9020"
+      - "9020:9000"
     networks:
       - pokemon_zoo_network
 
