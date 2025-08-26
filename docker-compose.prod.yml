@@ -1,0 +1,36 @@
+services:
+  mariadb:
+    image: mariadb:10.6
+    container_name: mariadb_dev
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: pokemonzoo
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypass
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./SQL:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    networks:
+      - pokemon_zoo_network
+
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: php81_prod
+    environment:
+      PHP_MEMORY_LIMIT: "512M"
+    expose:
+      - "9020:9020"
+    networks:
+      - pokemon_zoo_network
+
+volumes:
+  db_data:
+
+networks:
+  pokemon_zoo_network:
+    name: pokemon_zoo_network

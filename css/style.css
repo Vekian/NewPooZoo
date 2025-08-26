@@ -133,6 +133,7 @@ html, main, body{
 }
 #pokemons .tab-pane{
     padding-bottom : 100px;
+    min-height: 300px;
 }
 #next:hover {
     filter: invert(100%);

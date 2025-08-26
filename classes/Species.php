@@ -1,5 +1,7 @@
 <?php
-class Species extends Pokemon{
+
+class Species extends Pokemon
+{
     protected int $idSpecies;
     protected string $name;
     protected string $sexData;
@@ -18,7 +20,7 @@ class Species extends Pokemon{
     protected int $popularity;
     protected int $babyId;
     protected bool $legendary;
-    
+
 
     /**
      * Get the value of id
@@ -344,26 +346,26 @@ class Species extends Pokemon{
         return $this;
     }
 
-    public function __construct (array $data){
+    public function __construct(array $data)
+    {
         $this->hydrate($data);
     }
 
-    public function hydrate ($data) {
+    public function hydrate($data)
+    {
         parent::hydrate($data);
-        if (isset($data['species_id'])){
+        if (isset($data['species_id'])) {
             $this->setIdSpecies($data['species_id']);
-        }
-        else {
+        } else {
             $this->setIdSpecies($data['id']);
         }
         $this->setName($data['name']);
-        $this->setSexData($data['sexData']);
+        $this->setSexData($data['sex']);
         $this->setDiet($data['diet']);
         $this->setFirstType($data['Type1']);
-        if ($data['Type2'] !== null){
+        if ($data['Type2'] !== null) {
             $this->setSecondType($data['Type2']);
-        } 
-        else {
+        } else {
             $this->setSecondType("none");
         }
         $this->setAvatar($data['avatar']);
@@ -372,16 +374,15 @@ class Species extends Pokemon{
         $this->setMaxWeight($data['maxWeight']);
         $this->setMaxHeight($data['maxHeight']);
         $this->setLifeExpectancy($data['lifeExpectancy']);
-        if(isset($data['ageEvolution'])){
+        if (isset($data['ageEvolution'])) {
             $this->setAgeEvolution($data['ageEvolution']);
-        }
-        else {
+        } else {
             $this->setAgeEvolution(0);
         }
-        if (isset($data['idEvolution'])){
+        if (isset($data['idEvolution'])) {
             $this->setIdEvolution($data['idEvolution']);
         }
-        if (isset($data['nameEvolution'])){
+        if (isset($data['nameEvolution'])) {
             $this->setNameEvolution($data['nameEvolution']);
         }
         $this->setPopularity($data['popularity']);
@@ -389,33 +390,34 @@ class Species extends Pokemon{
         $this->setLegendary($data['Legendary']);
     }
 
-    public function move($fenceId){
-        if($fenceId == 1){
+    public function move($fenceId)
+    {
+        if ($fenceId == 1) {
             $state = $this->getName(). " s'ennuie dans la réserve.";
-        }
-        else {
-        $state = $this->getName(). " siffle sournoisement";
+        } else {
+            $state = $this->getName(). " siffle sournoisement";
         }
         return $state;
     }
 
-    public function showPokemon($fenceId, $employee){
+    public function showPokemon($fenceId, $employee)
+    {
         $sex = "";
         $priceFeed = round(2 + ($this->getWeight() / 10));
         $fences = $employee->findCompatibleFences($this);
         $type = $this->getName();
         $imgMoney = "<img src='images/pokedollar.png' height='20px' />";
-        if ($this->getSex() == "female"){
-                $sex = '<i class="fa-solid fa-venus" style="color: #dc8add;"></i>';
-        }
-        else {
-                $sex = '<i class="fa-solid fa-mars" style="color: #1c71d8;"></i>';
+        if ($this->getSex() == "female") {
+            $sex = '<i class="fa-solid fa-venus" style="color: #dc8add;"></i>';
+        } else {
+            $sex = '<i class="fa-solid fa-mars" style="color: #1c71d8;"></i>';
         }
         if (($this->getName() === "NidoranF") || ($this->getName() === "NidoranM")) {
-                $name = 'Nidoran';
+            $name = 'Nidoran';
+        } else {
+            $name = $this->getName();
         }
-        else {$name = $this->getName();}
-        
+
         echo('<div class="card text-center '. strtolower($this->getFirstType()) .'" style="width: 14rem;">
         <img src="' . $this->getAvatar() . '" class="col-4 offset-4 imgPokemon" alt="' . $this->getName() . '" height="80px">
         <div class="card-body">
@@ -432,18 +434,18 @@ class Species extends Pokemon{
                 <div class="tab-pane fade show active" id="nav-about'. $this->getId() .'" role="tabpanel" aria-labelledby="nav-home-tab">'
                         . $this->getHealth() . ' <i class="fa-solid fa-heart me-2" style="color: #e01b24;"></i>'. $this->getPopularity() .'<i class="fa-solid fa-star ms-1" style="color: #ffff00;"></i>
                         <br /><b><i>'. $this->showStateOfPokemon($fenceId) .'</i></b><br />');
-                        if ($this->getHungry() === true) {
-                                echo('<a href="process/processFeedPokemon.php?id='. $this->getId() .'&fenceId=' . $this->getFenceId() . '&price=' . $priceFeed . '" class="comic-button">Nourrir : '. $priceFeed . ' ' . $imgMoney .'</a>');
-                            }
-                            if ($this->getSleepy() === true) {
-                                echo('<a href="process/processSleepPokemon.php?id='. $this->getId() .'&fenceId=' . $this->getFenceId() . '" class="comic-button">Reposer</a>');
-                            }
-                            if (($this->getSick() === true) || ($this->getHealth() < 100)) {
-                                echo('<a href="process/processHealPokemon.php?id='. $this->getId() .'&fenceId=' . $this->getFenceId() . '&price=10" class="comic-button">Soigner : 10 '. $imgMoney .'</a>');
-                            }
+        if ($this->getHungry() === true) {
+            echo('<a href="process/processFeedPokemon.php?id='. $this->getId() .'&fenceId=' . $this->getFenceId() . '&price=' . $priceFeed . '" class="comic-button">Nourrir : '. $priceFeed . ' ' . $imgMoney .'</a>');
+        }
+        if ($this->getSleepy() === true) {
+            echo('<a href="process/processSleepPokemon.php?id='. $this->getId() .'&fenceId=' . $this->getFenceId() . '" class="comic-button">Reposer</a>');
+        }
+        if (($this->getSick() === true) || ($this->getHealth() < 100)) {
+            echo('<a href="process/processHealPokemon.php?id='. $this->getId() .'&fenceId=' . $this->getFenceId() . '&price=10" class="comic-button">Soigner : 10 '. $imgMoney .'</a>');
+        }
         echo('<br />Type(s) : <img src="images/' . strtolower($this->getFirstType()) . '.png" height="20px" alt="'. $this->getFirstType() .'" />');
-        if ($this->getSecondType() !== "none"){
-                echo('<img src="images/' . strtolower($this->getSecondType()) . '.png" height="20px" class="m" alt="'. $this->getSecondType() .'" />');
+        if ($this->getSecondType() !== "none") {
+            echo('<img src="images/' . strtolower($this->getSecondType()) . '.png" height="20px" class="m" alt="'. $this->getSecondType() .'" />');
         }
         echo('  </div>
                 <div class="tab-pane fade" id="nav-stats'. $this->getId() .'" role="tabpanel" aria-labelledby="nav-stats-tab">
@@ -496,7 +498,7 @@ class Species extends Pokemon{
         </div>');
         echo('</div>');
 
-echo('<div id="myModal'. $this->getid() .'" class="modalPerso">
+        echo('<div id="myModal'. $this->getid() .'" class="modalPerso">
         <div class="modal-contentPerso ">
                 <div class="modal-headerPerso">
                         <span class="closePerso">&times;</span>
@@ -507,86 +509,81 @@ echo('<div id="myModal'. $this->getid() .'" class="modalPerso">
                         <input type="hidden" value="'. $this->getId() .'" name="pokemonId">
                         <label for="newFence" class="mt-1">Choisissez un enclos </label>
                         <select name="newFenceId" id="newFence" required>');
-                        echo('<option value="" selected disabled hidden>Choisir</option>');
-                        foreach($fences as $fence) {
-                                echo('<option value="'. $fence->getId() . '">' . $fence->getName() . '</option>');
-                                };
+        echo('<option value="" selected disabled hidden>Choisir</option>');
+        foreach ($fences as $fence) {
+            echo('<option value="'. $fence->getId() . '">' . $fence->getName() . '</option>');
+        };
         echo('          </select>
                         <input type="submit" value="Déplacer vers l\'enclos" class="comic-button">
                 </form>
         </div>
 </div>');
-}
+    }
 
-public function showStateOfPokemon($fenceId){
-    $state = "";
-    if ($this->getSleepy() === true) {
+    public function showStateOfPokemon($fenceId)
+    {
+        $state = "";
+        if ($this->getSleepy() === true) {
             $state .= $this->getName() . " a sommeil";
             if ($this->getHungry() === true) {
-                    $state .= ", a faim";
-                    if ($this->getSick() === true) {
-                            $state .= ", est malade";
-                    }
-            }
-            else if ($this->getSick() === true) {
+                $state .= ", a faim";
+                if ($this->getSick() === true) {
                     $state .= ", est malade";
+                }
+            } elseif ($this->getSick() === true) {
+                $state .= ", est malade";
             }
-    }
-    else if ($this->getHungry() === true) {
+        } elseif ($this->getHungry() === true) {
             $state = $this->getName() . " a faim";
             if ($this->getSick() === true) {
-                    $state .= ", est malade ";
+                $state .= ", est malade ";
+            } elseif ($this->getSleeping() === true) {
+                $state .= ", dort";
             }
-            else if ($this->getSleeping() === true){
-                    $state .= ", dort";
-            }
-    }
-    else if ($this->getSick() === true){
+        } elseif ($this->getSick() === true) {
             $state = $this->getName() . " est malade";
-            if ($this->getSleeping() === true){
-                    $state .= ", dort";
+            if ($this->getSleeping() === true) {
+                $state .= ", dort";
             }
-    }
-    else if ($this->getSleeping() === true){
+        } elseif ($this->getSleeping() === true) {
             $state .= $this->getName() . " dort";
+        } else {
+            $state = $this->move($fenceId);
+        }
+        return $state;
     }
-    else {
-            $state= $this->move($fenceId);
-    }
-    return $state;
-}
 
-public function gainWeight(){
-    $maxWeight = $this->getMaxWeight();
+    public function gainWeight()
+    {
+        $maxWeight = $this->getMaxWeight();
 
-    if ($this->getWeight() < $maxWeight) {
-    $gainWeight = $maxWeight * 0.3;
-    if ($gainWeight < 1) {
-            $gainWeight = 1;
-    }
+        if ($this->getWeight() < $maxWeight) {
+            $gainWeight = $maxWeight * 0.3;
+            if ($gainWeight < 1) {
+                $gainWeight = 1;
+            }
             if ($this->getHungry() === true) {
-                    $this->setWeight(($this->getWeight()) + intval($gainWeight * 0.3));
+                $this->setWeight(($this->getWeight()) + intval($gainWeight * 0.3));
+            } else {
+                $this->setWeight(($this->getWeight()) + intval($gainWeight));
             }
-            else {
-                    $this->setWeight(($this->getWeight()) + intval($gainWeight));
-            }}
-    return $this->getWeight();
-}
+        }
+        return $this->getWeight();
+    }
 
-public function gainHeight(){
-    $maxHeight = $this->getMaxHeight();
+    public function gainHeight()
+    {
+        $maxHeight = $this->getMaxHeight();
 
-    if ($this->getHeight() < $maxHeight) {
-    $gainHeight = $maxHeight * 0.3;
+        if ($this->getHeight() < $maxHeight) {
+            $gainHeight = $maxHeight * 0.3;
             if ($this->getSick() === true) {
-                    $this->setHeight(($this->getHeight()) + intval($gainHeight * 0.5));
+                $this->setHeight(($this->getHeight()) + intval($gainHeight * 0.5));
+            } else {
+                $this->setHeight(($this->getHeight()) + intval($gainHeight));
             }
-            else {
-                    $this->setHeight(($this->getHeight()) + intval($gainHeight));
-            }}
-    return $this->getHeight();
-}
+        }
+        return $this->getHeight();
+    }
 
 }
-
-?>
