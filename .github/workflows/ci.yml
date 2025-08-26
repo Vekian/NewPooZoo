@@ -36,3 +36,4 @@ jobs:
             echo "${{ secrets.DOCKER_COMPOSE_FILE }}" >> docker-compose.yml
             docker pull ${{ secrets.DOCKER_USERNAME }}/pokemon_zoo:latest
             docker compose up -d
+            docker cp pokemon_zoo:/var/www/html/public ./public
