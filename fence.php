@@ -1,40 +1,40 @@
 <?php
-    include_once('header.php');
-    if (isset($_GET['fenceId'])){
-        $fenceId = $_GET['fenceId'];
-    }
-    $employee = $pokemonZoo->getEmployee();
-    $pokemons = $employee->examinePokemons($fenceId);
-    $pokemonsId = [];
-    foreach($pokemons as $pokemon){
-        array_push($pokemonsId, $pokemon->getId());
-    }
-    $jsonPokemonsId = json_encode($pokemonsId);
-    $species = $employee->findCompatiblePokemons($fenceId);
-    $priceSpecies = [];
-    $priceFree= [];
-    $jsonSpecies = json_encode($species);
-    $fence = $pokemonZoo->getFence($fenceId);
-    ?>
+include_once('header.php');
+if (isset($_GET['fenceId'])) {
+    $fenceId = $_GET['fenceId'];
+}
+$employee = $pokemonZoo->getEmployee();
+$pokemons = $employee->examinePokemons($fenceId);
+$pokemonsId = [];
+foreach ($pokemons as $pokemon) {
+    array_push($pokemonsId, $pokemon->getId());
+}
+$jsonPokemonsId = json_encode($pokemonsId);
+$species = $employee->findCompatiblePokemons($fenceId);
+$priceSpecies = [];
+$priceFree = [];
+$jsonSpecies = json_encode($species);
+$fence = $pokemonZoo->getFence($fenceId);
+?>
 <section id="displayTotalFence">
     
     <div class="d-flex flex-wrap" id="infosFence">
         <?php
-            $employee->displayFence($fenceId, $pokemons);
-        ?>
+        $employee->displayFence($fenceId, $pokemons);
+?>
     </div>
 
     <div id="pokemons" class="d-flex justify-content-center flex-wrap mt-1">
         <div id="indicatorBefore" class="invisible">
         </div>
         <?php
-            foreach($pokemons as $pokemon){
-                $popularityFree = $pokemon->getPopularity() / 5;
-                $priceFree[$pokemon->getName()] = $popularityFree;
-                $pokemon->showPokemon($fenceId, $employee);
-            }
-            $jsonPriceFree = json_encode($priceFree);
-        ?>
+    foreach ($pokemons as $pokemon) {
+        $popularityFree = $pokemon->getPopularity() / 5;
+        $priceFree[$pokemon->getName()] = $popularityFree;
+        $pokemon->showPokemon($fenceId, $employee);
+    }
+$jsonPriceFree = json_encode($priceFree);
+?>
         <div id="indicatorNext"> 
         </div>
     </div>
@@ -54,14 +54,14 @@
             let buttonBefore = document.createElement('button');
             buttonBefore.setAttribute('id', 'before');
             buttonBefore.classList.add('btn', 'mt-5');
-            buttonBefore.innerHTML = "<img src='images/gauche.png' height='50px' width='10px' />";
+            buttonBefore.innerHTML = "<img src='public/images/gauche.png' height='50px' width='10px' />";
             let parentBefore = document.getElementById('indicatorBefore');
             parentBefore.appendChild(buttonBefore);
 
             let buttonNext = document.createElement('button');
             buttonNext.setAttribute('id', 'next');
             buttonNext.classList.add('btn', 'ms-3', 'mt-5');
-            buttonNext.innerHTML = "<img src='images/droite.png' height='50px' width='10px' />";
+            buttonNext.innerHTML = "<img src='public/images/droite.png' height='50px' width='10px' />";
             let parentNext = document.getElementById('indicatorNext');
             parentNext.appendChild(buttonNext);
 
@@ -80,14 +80,14 @@
             let buttonBefore = document.createElement('button');
             buttonBefore.setAttribute('id', 'before');
             buttonBefore.classList.add('btn', 'mt-5');
-            buttonBefore.innerHTML = "<img src='images/gauche.png' height='50px' />";
+            buttonBefore.innerHTML = "<img src='public/images/gauche.png' height='50px' />";
             let parentBefore = document.getElementById('indicatorBefore');
             parentBefore.appendChild(buttonBefore);
 
             let buttonNext = document.createElement('button');
             buttonNext.setAttribute('id', 'next');
             buttonNext.classList.add('btn', 'ms-3', 'mt-5');
-            buttonNext.innerHTML = "<img src='images/droite.png' height='50px' />";
+            buttonNext.innerHTML = "<img src='public/images/droite.png' height='50px' />";
             let parentNext = document.getElementById('indicatorNext');
             parentNext.appendChild(buttonNext);
             
@@ -104,14 +104,14 @@
             let buttonBefore = document.createElement('button');
             buttonBefore.setAttribute('id', 'before');
             buttonBefore.classList.add('btn', 'mt-5');
-            buttonBefore.innerHTML = "<img src='images/gauche.png' height='50px' />";
+            buttonBefore.innerHTML = "<img src='public/images/gauche.png' height='50px' />";
             let parentBefore = document.getElementById('indicatorBefore');
             parentBefore.appendChild(buttonBefore);
 
             let buttonNext = document.createElement('button');
             buttonNext.setAttribute('id', 'next');
             buttonNext.classList.add('btn', 'ms-3', 'mt-5');
-            buttonNext.innerHTML = "<img src='images/droite.png' height='50px' />";
+            buttonNext.innerHTML = "<img src='public/images/droite.png' height='50px' />";
             let parentNext = document.getElementById('indicatorNext');
             parentNext.appendChild(buttonNext);
             
@@ -207,14 +207,14 @@
                             <label for="idSpecies" class="mt-1">Choisissez votre pokemon : </label>
                             <select name="idSpecies" id="idSpecies" class="m-2" required >
                             <?php
-                                echo('<option value="" selected disabled hidden>Choisir</option>');
-                                foreach($species as $specie) {
-                                    array_push($priceSpecies, $specie['popularity']);
-                                    echo('<option value="'. $specie['id'] . '">' . $specie['name'] . '</option>');
-                                }
-                                $jsonPriceSpecies = json_encode($priceSpecies);
-                                
-                            ?>
+                        echo('<option value="" selected disabled hidden>Choisir</option>');
+foreach ($species as $specie) {
+    array_push($priceSpecies, $specie['popularity']);
+    echo('<option value="'. $specie['id'] . '">' . $specie['name'] . '</option>');
+}
+$jsonPriceSpecies = json_encode($priceSpecies);
+
+?>
                             </select class="btn btn-primary">
                             <div>
                                 Prix du pokemon : <span id="priceSpecies"></span>
@@ -244,11 +244,11 @@
                             <label for="idSpecies2" class="mt-1">Choisissez un pokemon </label>
                             <select name="idPokemon" id="idSpecies2" class="m-2" required >
                             <?php
-                                echo('<option value="" selected disabled hidden>Choisir</option>');
-                                foreach($pokemons as $pokemon) {
-                                    echo('<option value="'. $pokemon->getId() . '">' . $pokemon->getName() . '</option>');
-                                }
-                            ?>
+    echo('<option value="" selected disabled hidden>Choisir</option>');
+foreach ($pokemons as $pokemon) {
+    echo('<option value="'. $pokemon->getId() . '">' . $pokemon->getName() . '</option>');
+}
+?>
                             </select class="btn btn-primary">
                             <input type="submit" value="Enlever de l'enclos" class="comic-button">
                         </form>

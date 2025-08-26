@@ -406,7 +406,7 @@ class Species extends Pokemon
         $priceFeed = round(2 + ($this->getWeight() / 10));
         $fences = $employee->findCompatibleFences($this);
         $type = $this->getName();
-        $imgMoney = "<img src='images/pokedollar.png' height='20px' />";
+        $imgMoney = "<img src='public/images/pokedollar.png' height='20px' />";
         if ($this->getSex() == "female") {
             $sex = '<i class="fa-solid fa-venus" style="color: #dc8add;"></i>';
         } else {
@@ -443,9 +443,9 @@ class Species extends Pokemon
         if (($this->getSick() === true) || ($this->getHealth() < 100)) {
             echo('<a href="process/processHealPokemon.php?id='. $this->getId() .'&fenceId=' . $this->getFenceId() . '&price=10" class="comic-button">Soigner : 10 '. $imgMoney .'</a>');
         }
-        echo('<br />Type(s) : <img src="images/' . strtolower($this->getFirstType()) . '.png" height="20px" alt="'. $this->getFirstType() .'" />');
+        echo('<br />Type(s) : <img src="public/images/' . strtolower($this->getFirstType()) . '.png" height="20px" alt="'. $this->getFirstType() .'" />');
         if ($this->getSecondType() !== "none") {
-            echo('<img src="images/' . strtolower($this->getSecondType()) . '.png" height="20px" class="m" alt="'. $this->getSecondType() .'" />');
+            echo('<img src="public/images/' . strtolower($this->getSecondType()) . '.png" height="20px" class="m" alt="'. $this->getSecondType() .'" />');
         }
         echo('  </div>
                 <div class="tab-pane fade" id="nav-stats'. $this->getId() .'" role="tabpanel" aria-labelledby="nav-stats-tab">
@@ -491,7 +491,7 @@ class Species extends Pokemon
                 </div>
                 <div class="tab-pane fade" id="nav-moves'. $this->getId() .'" role="tabpanel" aria-labelledby="nav-moves-tab">
                         <button id="myBtn' . $this->getId() .'" class="comic-button  mt-2">
-                                Déplacer le pokemon : -5 <img src="images/pokedollar.png" height="20px" />
+                                Déplacer le pokemon : -5 <img src="public/images/pokedollar.png" height="20px" />
                         </button>
                 </div>
         </div>

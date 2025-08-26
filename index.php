@@ -1,10 +1,10 @@
 <?php
-    include_once('header.php');
-    
-    
-    if(isset($_SESSION['LOGGED_USER'])){ 
-        $fences= $pokemonZoo->getFences();
-?>
+include_once('header.php');
+
+
+if (isset($_SESSION['LOGGED_USER'])) {
+    $fences = $pokemonZoo->getFences();
+    ?>
     <main class="text-center" id="infosFence">
         <div class="col-sm-8 col-12 offset-sm-2 infosZoo mt-3 mb-4">
             <h1>
@@ -15,27 +15,27 @@
             </h2>
             <div class="summary">
             <?php
-            if($pokemonZoo->getSummary()){
-                foreach($pokemonZoo->getSummary() as $dataSummary) {
-                    
-                    echo($dataSummary . "<br/>");
-                } 
-            }
-            ?>
+                if ($pokemonZoo->getSummary()) {
+                    foreach ($pokemonZoo->getSummary() as $dataSummary) {
+
+                        echo($dataSummary . "<br/>");
+                    }
+                }
+    ?>
             </div>
         </div>
 
         <div id="fences" class="d-flex justify-content-center align-items-center flex-wrap">
-            <?php 
-                
-                $pokemonZoo->displayFences();
-            ?>
+            <?php
+
+        $pokemonZoo->displayFences();
+    ?>
             <div>
                 <button type="button" id="addFence" class="btn1 <?php
-                if (count($pokemonZoo->getFences()) - 1 >= $pokemonZoo->getNumberMaxFences()) {
-                    echo('d-none');
-                }
-                ?>" data-bs-toggle="modal" data-bs-target="#addFenceModal">
+        if (count($pokemonZoo->getFences()) - 1 >= $pokemonZoo->getNumberMaxFences()) {
+            echo('d-none');
+        }
+    ?>" data-bs-toggle="modal" data-bs-target="#addFenceModal">
                     Ajouter un enclos
                 </button>
             </div>
@@ -49,19 +49,19 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h3> Prix de l'enclos : <span id="priceFence"><?php echo($pokemonZoo->getPriceFence()); ?></span><img src='images/pokedollar.png' height='30px' /></h3>
+                        <h3> Prix de l'enclos : <span id="priceFence"><?php echo($pokemonZoo->getPriceFence()); ?></span><img src='public/images/pokedollar.png' height='30px' /></h3>
                         <form action="process/addFence.php" method="POST" class="text-center m-4">
                             <label for="text" class="mt-1">Veuillez donner un nom à votre enclos : </label>
                             <input type="text" name="nameFence" id="nameFence" required><br />
                             <label for="typeFence" class="mt-1">Choisissez le type d'enclos : </label>
                             <select name="typeFence" id="typeFence" class="m-2" required >
                             <?php
-                                echo('<option value="" selected disabled hidden>Choisir</option>');
-                                $fenceTypes= Fence::$fenceTypes;
-                                foreach($fenceTypes as $fenceType) {
-                                    echo('<option value="'. $fenceType . '">' . $fenceType . '</option>');
-                                }
-                            ?>
+                    echo('<option value="" selected disabled hidden>Choisir</option>');
+    $fenceTypes = Fence::$fenceTypes;
+    foreach ($fenceTypes as $fenceType) {
+        echo('<option value="'. $fenceType . '">' . $fenceType . '</option>');
+    }
+    ?>
                             </select class="btn btn-primary">
                             <input type="hidden" name="background" value="">
                             <input type="hidden" name="price" value="<?php echo($pokemonZoo->getPriceFence()); ?>">
@@ -71,12 +71,11 @@
                 </div>
             </div>
         </div>
-    <?php 
+    <?php
+} else {
+    if (isset($_GET['error'])) {
+        echo('<h5 class="text-center text-danger">' . $_GET['error'] . '</h5>');
     }
-    else {
-        if (isset($_GET['error'])){
-            echo('<h5 class="text-center text-danger">' . $_GET['error'] . '</h5>');
-        }
     ?>
     <div class="text-center">
         <div class="login col-8 offset-2 mt-3">
@@ -111,8 +110,8 @@
         </div>
     </div>
     <?php
-    }
-    ?>
+}
+?>
     </main>
     <script>
     let selectFence = document.getElementById('typeFence');

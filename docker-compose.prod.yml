@@ -23,6 +23,8 @@ services:
       PHP_MEMORY_LIMIT: "512M"
     ports:
       - "9020:9000"
+    volumes:
+      - ./public:/var/www/pokemon_zoo
     networks:
       - pokemon_zoo_network
 

@@ -1,8 +1,9 @@
 <?php
+
 require_once('../config/autoload.php');
 require_once('../config/db.php');
 
-if (!isset($_POST['pseudo']) && !isset($_POST['password'])){
+if (!isset($_POST['pseudo']) && !isset($_POST['password'])) {
     echo('Rentrez des identifiants valides');
     return;
 }
@@ -30,7 +31,7 @@ $stmt->execute([
     'zoo_id' => $id
 ]);
 $pokemonZoo = new Zoo($db, $id);
-$pokemonZoo->addFence('Reserve', 'Reserve', 'images/reserve.jpg', $id);
+$pokemonZoo->addFence('Reserve', 'Reserve', 'public/images/reserve.jpg', $id);
 
 
 $_SESSION['LOGGED_USER'] = $id;
