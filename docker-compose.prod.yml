@@ -18,10 +18,10 @@ services:
 
   php:
     image: vekian/pokemon_zoo:latest
-    container_name: php81_prod
+    container_name: pokemon_zoo
     environment:
       PHP_MEMORY_LIMIT: "512M"
-    expose:
+    ports:
       - "9020:9020"
     networks:
       - pokemon_zoo_network
