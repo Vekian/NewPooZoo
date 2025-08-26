@@ -20,7 +20,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
-    image: pokemon_zoo:latest
+    image: vekian/pokemon_zoo:latest
     container_name: php81_prod
     environment:
       PHP_MEMORY_LIMIT: "512M"
